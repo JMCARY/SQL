@@ -25,14 +25,16 @@ CREATE TABLE #Contact
  FROM #Contact AS C
  WHERE EXISTS (
    SELECT 1 
-   FROM #Contact C1 
-   WHERE C1.Adult=C.Adult AND C1.Gender = 'F' 
-   GROUP BY C1.Adult 
+   FROM #Contact F 
+   WHERE F.Adult=C.Adult 
+     AND F.Gender = 'F' 
+   GROUP BY F.Adult 
    HAVING COUNT(1)=1
    INTERSECT 
    SELECT 1 
-   FROM #Contact C1 
-   WHERE C1.Adult=C.Adult AND C1.Gender = 'M' 
-   GROUP BY C1.Adult 
+   FROM #Contact M 
+   WHERE M.Adult=C.Adult 
+     AND M.Gender = 'M' 
+   GROUP BY M.Adult 
    HAVING COUNT(1)=1
  );
