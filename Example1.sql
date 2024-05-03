@@ -23,7 +23,7 @@ CREATE TABLE #Contact
  (2,'Work','N'),
  (3,'Mobile','Y');
  SELECT C.Id,
- 		MAX(CASE Type WHEN 'Home' THEN Present ELSE 'N' END) AS Home,
+        MAX(CASE Type WHEN 'Home' THEN Present ELSE 'N' END) AS Home,
         MAX(CASE Type WHEN 'Email' THEN Present ELSE 'N' END) AS Email,
         MAX(CASE Type WHEN 'Mobile' THEN Present ELSE 'N' END) AS Mobile
  FROM #Contact AS C
